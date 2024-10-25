@@ -2,9 +2,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import React from "react";
-import SponsorLogin from "./SponsorLogin";
+import ContributorLogin from "./ContributorLogin";
 
-const SponsorSignin = () => {
+const ContributorSignin = () => {
   const [choose, setChoose] = useState(true);
   return (
     <>
@@ -31,8 +31,8 @@ const SponsorSignin = () => {
               <div className="flex flex-col w-[70%]">
                 <input
                   type="text"
-                  id="organization-name"
-                  placeholder="Organization Name"
+                  id="name"
+                  placeholder="Full Name"
                   className="rounded-full px-6 py-3 border border-gray-500 text-[#1E1E1E]"
                 />
               </div>
@@ -40,8 +40,8 @@ const SponsorSignin = () => {
               <div className="flex flex-col w-[70%]">
                 <input
                   type="text"
-                  id="organization-type"
-                  placeholder="Organization Type"
+                  id="skills"
+                  placeholder="Skills"
                   className="rounded-full px-6 py-3 border border-gray-500 text-[#1E1E1E]"
                 />
               </div>
@@ -49,8 +49,8 @@ const SponsorSignin = () => {
               <div className="flex flex-col w-[70%]">
                 <input
                   type="url"
-                  id="website-url"
-                  placeholder="Website Link"
+                  id="portfolio-url"
+                  placeholder="Portfolio Link"
                   className="rounded-full px-6 py-3 border border-gray-500 outline-1 text-[#1E1E1E]"
                 />
               </div>
@@ -86,16 +86,19 @@ const SponsorSignin = () => {
 
           <p className="flex w-[30%] text-gray-500 text-4xl">- OR -</p>
 
-          <div className="flex w-[55%]">
+          <div className="flex w-[95%] justify-between items-center">
             <button className="text-gray-600 text-xl font-medium px-6 py-3 border border-gray-500 rounded-xl">
               Sign Up With Google
+            </button>
+            <button className="text-gray-600 text-xl font-medium px-6 py-3 border border-gray-500 rounded-xl">
+              Sign Up With GitHub
             </button>
           </div>
         </div>
       </div>
-      {choose ? "" : <SponsorLogin />}
+      {choose ? "" : <ContributorLogin />}
     </>
   );
 };
 
-export default SponsorSignin;
+export default ContributorSignin;

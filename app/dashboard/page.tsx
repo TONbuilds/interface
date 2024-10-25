@@ -20,7 +20,7 @@ const Dashboard = () => {
           <p className="text-[#1E1E1E]">Are you a Contributor or a Sponsor?</p>
           <div className="flex flex-col gap-4 w-full">
             <div className="flex flex-col w-[50%] cursor-pointer">
-              <Link className="w-full" href="/contributor">
+              <Link className="w-full" href="/contributorSetup">
                 <button className="bg-[#1E1E1E] rounded-full text-lg py-3 w-full">
                   Contributor
                 </button>
@@ -28,7 +28,7 @@ const Dashboard = () => {
             </div>
 
             <div className="flex flex-col w-[50%] cursor-pointer">
-              <Link href="sponsor" className="flex w-full">
+              <Link href="/sponsorSetup" className="flex w-full">
                 <button className="bg-[#1E1E1E] rounded-full text-lg py-3 w-full">
                   Sponsor
                 </button>

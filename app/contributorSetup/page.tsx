@@ -1,4 +1,4 @@
-import ContributorSignin from "@/components/ContributorSignin";
+import ContributorSignin from "@/components/contributor/ContributorSignin";
 import React from "react";
 
 const page = () => {
