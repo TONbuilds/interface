@@ -1,13 +1,31 @@
-import Link from "next/link";
+import ContactUs from "@/components/ContactUs";
+import FeaturedProjects from "@/components/FeaturedProjects";
+import Happen from "@/components/Happen";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Testimonials from "@/components/Testimonials";
+import Why from "@/components/Why";
+import { Space_Grotesk } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"], // Optional: other subsets include 'latin-ext' etc.
+  weight: ["400", "500", "600", "700"], // Choose the weights you need
+  variable: "--font-space-grotesk", // Custom CSS variable for easier usage
+});
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Link href="/dashboard">
-        <button className="flex justify-center items-center px-4 py-2 bg-cyan-500 text-xl font-semibold rounded-xl">
-          Try
-        </button>
-      </Link>
+    <div
+      className={`${spaceGrotesk.className} w-full bg-white min-h-screen py-12 bg-contain flex flex-col items-center justify-center gap-16`}
+      style={{ backgroundImage: "url('/grid.png')" }}
+    >
+      <Navbar />
+      <Hero />
+      <FeaturedProjects />
+      <Happen />
+      <Why />
+      <Testimonials />
+      <ContactUs />
     </div>
   );
 }

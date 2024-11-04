@@ -4,8 +4,7 @@ import ContributorNavbar from "@/components/contributor/ContributorNavbar";
 import CurrentTasks from "@/components/contributor/CurrentTasks";
 import CompletedTasks from "@/components/contributor/CompletedTasks";
 import UpcomingTasks from "@/components/contributor/UpcomingTasks";
-import Image from "next/image";
-import Link from "next/link";
+import CardContributorProject from "@/components/cards/CardContributorProject";
 
 function ContributorDashboard({ name }: { name: string }) {
   const [activePage, setActivePage] = useState("CurrentTasks");
@@ -32,7 +31,7 @@ function ContributorDashboard({ name }: { name: string }) {
   function Layout({ children }: { children: React.ReactNode }) {
     return (
       <div
-        className="w-full flex items-center flex-col gap-8 bg-white min-h-screen pt-16 bg-cover"
+        className="w-full flex items-center flex-col gap-8 bg-white min-h-screen py-16 bg-cover"
         style={{ backgroundImage: "url('/grid.png')" }}
       >
         <div
@@ -49,7 +48,9 @@ function ContributorDashboard({ name }: { name: string }) {
                 <p className="text-sm font-medium text-black bg-[#5577FF]/40 w-fit py-1 px-2 rounded-2xl">
                   Contributor
                 </p>
-                <p className="text-white">Welcome back! Here's your personalized Dashboard.</p>
+                <p className="text-white">
+                  Welcome back! Here is your personalized Dashboard.
+                </p>
               </div>
             </div>
             <div className="flex flex-col gap-2 justify-center">
@@ -73,6 +74,35 @@ function ContributorDashboard({ name }: { name: string }) {
           />
         </div>
         {children}
+
+        <div className="w-[95%] mt-8 flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <p className="text-[#56555C] text-4xl">Profile Summary</p>
+            <div className="flex h-[2px] bg-gray-400 rounded-full"></div>
+          </div>
+        </div>
+        <div className="w-[95%]">
+          <div className="flex flex-wrap justify-center gap-8">
+            <CardContributorProject project="Design Projects" />
+            <CardContributorProject project="Web Projects" />
+            <CardContributorProject project="App Projects" />
+          </div>
+        </div>
+
+        <div className="w-[95%] mt-8 flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <p className="text-[#56555C] text-4xl">Top Contributors</p>
+            <div className="flex h-[2px] bg-gray-400 rounded-full"></div>
+          </div>
+        </div>
+        <div className="w-[85%]">
+          <div className="flex flex-wrap justify-start gap-8">
+            <CardContributorProject project="Design Projects" />
+            <CardContributorProject project="Web Projects" />
+            <CardContributorProject project="App Projects" />
+            <CardContributorProject project="Content Projects" />
+          </div>
+        </div>
       </div>
     );
   }
