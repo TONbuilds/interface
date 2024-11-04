@@ -6,7 +6,7 @@ import CompletedTasks from "@/components/contributor/CompletedTasks";
 import UpcomingTasks from "@/components/contributor/UpcomingTasks";
 import CardContributorProject from "@/components/cards/CardContributorProject";
 
-function ContributorDashboard({ name }: { name: string }) {
+function ContributorDashboard() {
   const [activePage, setActivePage] = useState("CurrentTasks");
   return (
     <Layout>
@@ -43,7 +43,7 @@ function ContributorDashboard({ name }: { name: string }) {
               <div className="bg-white/35 h-[5rem] w-[5rem] rounded-full"></div>
               <div className="flex flex-col gap-3">
                 <p className="text-2xl font-semibold text-white">
-                  {name} Contributor User
+                  Contributor User
                 </p>
                 <p className="text-sm font-medium text-black bg-[#5577FF]/40 w-fit py-1 px-2 rounded-2xl">
                   Contributor
