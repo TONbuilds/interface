@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Add from "./Add";
+import Link from "next/link";
 
 const ProfileCard = ({
   img,
@@ -138,9 +139,14 @@ const ProfileCard = ({
         </p>
         <div className="w-[30%] flex flex-col gap-6">
           <Add />
-          <button className="py-2 rounded-lg border border-[#94A3B8]">
-            Browse Bounties
-          </button>
+          <Link
+            href="/bounties"
+            className="py-2 rounded-lg border border-[#94A3B8] text-center"
+          >
+            <button>
+              Browse Bounties
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -13,9 +13,11 @@ const NavBounties = () => {
           <p>About Us</p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="px-4 py-2 bg-[#0AD372] text-white font-medium border border-[#0AD372] rounded-xl">
-            Become Sponsor
-          </button>
+          <Link href="/become-sponsor">
+            <button className="px-4 py-2 bg-[#0AD372] text-white font-medium border border-[#0AD372] rounded-xl">
+              Become Sponsor
+            </button>
+          </Link>
           <Link href="/profile">
             <button className="px-4 py-2 text-lg font-bold text-[#0AD372] border rounded-xl">
               Profile
