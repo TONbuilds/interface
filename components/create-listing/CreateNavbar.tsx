@@ -12,7 +12,7 @@ const CreateNavbar = () => {
                     </button>
                 </Link>
                 <div className='flex h-[1px] w-full bg-[#00000014]'></div>
-                <Link href="/my-listings">
+                <Link href="/my-listings" className='flex justify-start w-full'>
                     <button className='flex justify-start w-full px-6 gap-3 items-center'>
                         <Image src="/mylisting.svg" height={25} width={25} alt='listing' className='text-[#64748B]' />
                         <p className='text-lg font-medium text-[#64748B]'>My Listings</p>
