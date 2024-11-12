@@ -19,7 +19,16 @@ const Add = () => {
       {isOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-60 backdrop-blur-[4px] z-10">
           <div className="pop-background border border-[#D7DEDD] bg-[#FAF9F9] rounded-2xl flex flex-col w-[50%] shadow-lg p-8 overflow-y-auto h-[90vh]">
-            <h2 className="text-3xl font-bold mb-4">Add Project</h2>
+            <div className="flex w-full justify-between items-center">
+              <h2 className="text-3xl font-bold mb-4">Add Project</h2>
+              <button
+                onClick={togglePopup}
+                className="text-white bg-gradient-to-b from-[#318949] to-[#22CC77] w-[10%] font-bold p-4 rounded-full flex justify-center items-center"
+              >
+                X
+              </button>
+            </div>
+
             <div className="h-[1px] bg-black/[0.4] w-full"></div>
             <div className="flex flex-col items-center gap-3 mt-4 w-full">
               <div className="flex flex-col justify-center gap-1 w-[60%]">

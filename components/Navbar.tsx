@@ -12,7 +12,7 @@ const Navbar = () => {
           <p>Use Cases</p>
           <p>Pricing</p>
           <p>Blog</p>
-          <Link href="/dashboard">
+          <Link href="/bounties">
             <button className="flex border border-[#000000] rounded-xl px-6 py-4 text-base">
               Launch App
             </button>
