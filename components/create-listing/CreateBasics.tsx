@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import CreateDescription from './CreateDescription'
+import CreateDescription from './CreateDescription';
 
 const CreateBasics = () => {
     const [choose, setChoose] = useState(true);

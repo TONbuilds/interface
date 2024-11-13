@@ -1,6 +1,6 @@
+import CreateBasics from '@/components/create-listing/CreateBasics'
 import CreateNavbar from '@/components/create-listing/CreateNavbar'
 import React from 'react'
-import CreateBasics from './CreateBasics'
 
 const page = () => {
     return (

@@ -3,7 +3,7 @@ import React from "react";
 
 const StatsBanner = () => {
   return (
-    <div className="w-full absolute flex justify-center items-center bg-gradient-to-r from-[#22CC77] via-[#22CC77] to-[#318949] py-8">
+    <div className="w-full flex justify-center items-center bg-gradient-to-r from-[#22CC77] via-[#22CC77] to-[#318949] py-8">
       <div className="flex items-center justify-between w-[85%] gap-6">
         <div className="flex flex-col h-[190px] pl-8 justify-center bg-[#D2FBD0] border-[3px] flex-shrink-0 rounded-md w-[28%]">
           <div className="flex items-center gap-1">
