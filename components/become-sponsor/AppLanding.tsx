@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 // import { BankNote031 } from "../../icons/BankNote031";
 // import { Bell021 } from "../../icons/Bell021";
@@ -233,9 +234,11 @@ export const AppLandingPage = (): JSX.Element => {
                     <div className="absolute w-[373px] h-[60px] top-[447px] left-[236px]">
                         <div className="absolute w-[180px] h-[60px] top-0 left-0 bg-black rounded">
                             <div className="w-[136px] top-4 left-[23px] relative h-7">
-                                <div className="absolute top-0 left-0 [font-family:'Inter',Helvetica] font-medium text-white text-lg tracking-[0] leading-7 whitespace-nowrap">
-                                    Get Started
-                                </div>
+                                <Link href="/become-sponsor/sponsor-form">
+                                    <div className="absolute top-0 left-0 [font-family:'Inter',Helvetica] font-medium text-white text-lg tracking-[0] leading-7 whitespace-nowrap cursor-pointer">
+                                        Get Started
+                                    </div>
+                                </Link>
 
                                 <img
                                     className="absolute w-6 h-[7px] top-2.5 left-[110px] object-cover"
@@ -916,7 +919,7 @@ export const AppLandingPage = (): JSX.Element => {
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div >
