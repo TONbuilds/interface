@@ -5,6 +5,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { uploadMedia } from "@/api/api";
 import { useProfile } from "@/hooks/useProfile";
 import { useRouter } from "next/navigation";
+import HostCompetition from "./HostCompetition";
 
 const { Title, Text } = Typography;
 
@@ -257,6 +258,7 @@ const SponsorInput = () => {
             </Button>
           </Form.Item>
         </Form>
+        <HostCompetition />
       </div>
     </div>
   );
