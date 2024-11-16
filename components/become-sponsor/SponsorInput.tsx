@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Form, Input, Button, Upload, Typography, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { uploadMedia } from "@/api/api";
@@ -8,19 +8,25 @@ import { useRouter } from "next/navigation";
 
 const { Title, Text } = Typography;
 
+const MAX_FILE_SIZE_MB = 5; // Set maximum file size to 5MB
+
 const SponsorInput = () => {
   const [uploading, setUploading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [profilePicturePath, setProfilePicturePath] = useState("");
   const [companyLogoPath, setCompanyLogoPath] = useState("");
   const [form] = Form.useForm();
   const { profile, handleFetchProfile, handleCompleteProfile } = useProfile();
-  {
-  }
   const router = useRouter();
 
   const handleUploadChange = async (info: any, type: "profile" | "logo") => {
     const file = info.fileList[0]?.originFileObj;
     if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+      message.error(`File size exceeds ${MAX_FILE_SIZE_MB}MB.`);
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -30,73 +36,69 @@ const SponsorInput = () => {
       const response = await uploadMedia(formData);
       message.success("File uploaded successfully!");
       const uploadedPath = response.data.data.fileName;
+      console.log(uploadedPath, "uploadedPath");
       if (type === "profile") {
         setProfilePicturePath(uploadedPath);
       } else if (type === "logo") {
         setCompanyLogoPath(uploadedPath);
       }
-      console.log(`Uploaded file path for ${type}:`, uploadedPath);
     } catch (error) {
       console.error("File upload error:", error);
-      message.error("Failed to upload the file.");
+      message.error("Failed to upload the file. Please try again.");
     } finally {
       setUploading(false);
     }
   };
 
   const onFinish = async (values: any) => {
+    setSubmitting(true);
     try {
       const sponsorData = {
         firstName: values.firstName,
         lastName: values.lastName,
         userName: values.userName,
-        // profilePic: profilePicturePath,
+        profilePic: profilePicturePath || "",
         company: {
           name: values.company_name,
           userName: values.company_username,
           website: values.company_url,
           entityName: values.entity,
-          // logo: companyLogoPath,
-          twitter: values.company_twitter,
+          logo: companyLogoPath || "",
+          twitter: values.company_twitter || "",
           industry: values.industry ? values.industry.split(",") : [],
-          bio: values.company_bio,
+          bio: values.company_bio || "",
         },
       };
 
       const response = await handleCompleteProfile(sponsorData);
-
       message.success("Sponsor created successfully!");
-      console.log("Sponsor creation response:", response);
       router.push("/bounties");
       form.resetFields();
       setProfilePicturePath("");
       setCompanyLogoPath("");
     } catch (error) {
       console.error("Error while creating sponsor:", error);
-      message.error("Failed to create sponsor.");
+      message.error(
+        "Failed to create sponsor. Please ensure all required fields are filled."
+      );
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  useEffect(() => {
+  const fetchProfileIfNeeded = useCallback(() => {
     if (!profile) {
       handleFetchProfile();
     }
   }, [profile, handleFetchProfile]);
 
+  useEffect(() => {
+    fetchProfileIfNeeded();
+  }, [fetchProfileIfNeeded]);
+
   const firstName = profile?.firstName;
   const lastName = profile?.lastName;
   const username = profile?.userName;
-  console.log("profile", firstName, lastName, username);
-
-  // useEffect(() => {
-  //   if (firstName && lastName && username) {
-  //     form.setFieldsValue({
-  //       first: firstName,
-  //       last: lastName,
-  //       userName: username,
-  //     });
-  //   }
-  // }, [firstName, lastName, username, form]);
 
   return (
     <div className="flex justify-center w-full">
@@ -106,12 +108,13 @@ const SponsorInput = () => {
             Welcome to XYZ
           </Title>
           <Text className="text-[#A0AEC0] text-xl font-medium">
-            Lets start with some basic information about your company
+            Let’s start with some basic information about your company.
           </Text>
         </div>
         <Form
           onFinish={onFinish}
           layout="vertical"
+          form={form}
           initialValues={{ remember: true }}
           className="w-full"
         >
@@ -147,9 +150,7 @@ const SponsorInput = () => {
             <Form.Item
               label="Profile Picture"
               name="profile_picture"
-              valuePropName="fileList"
-              getValueFromEvent={(e) => e?.fileList}
-              extra="SVG, PNG, JPG or GIF (MAX. 800x400px)"
+              extra="SVG, PNG, JPG or GIF (MAX. 800x400px, 5MB)"
             >
               <Upload
                 name="file"
@@ -158,7 +159,9 @@ const SponsorInput = () => {
                 beforeUpload={() => false}
                 maxCount={1}
               >
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
+                <Button icon={<UploadOutlined />} disabled={uploading}>
+                  {uploading ? "Uploading..." : "Click to upload"}
+                </Button>
               </Upload>
             </Form.Item>
           </div>
@@ -191,36 +194,33 @@ const SponsorInput = () => {
             </div>
             <div className="flex items-center justify-between">
               <Form.Item
-                label="Company URL"
-                name="company_url"
+                label="Company Twitter"
+                name="company_twitter"
                 rules={[
-                  { required: true, message: "Company URL is required!" },
+                  {
+                    type: "url",
+                    message: "Please enter a valid URL!",
+                  },
                 ]}
                 className="w-[48%]"
               >
-                <Input type="url" />
+                <Input placeholder="e.g., https://twitter.com/yourcompany" />
               </Form.Item>
               <Form.Item
-                label="Company Twitter"
-                name="company_twitter"
+                label="Entity Name"
+                name="entity"
+                rules={[
+                  { required: true, message: "Entity Name is required!" },
+                ]}
                 className="w-[48%]"
               >
                 <Input />
               </Form.Item>
             </div>
             <Form.Item
-              label="Entity Name"
-              name="entity"
-              rules={[{ required: true, message: "Entity Name is required!" }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
               label="Company Logo"
               name="company_logo"
-              valuePropName="fileList"
-              getValueFromEvent={(e) => e?.fileList}
-              extra="SVG, PNG, or JPG  (MAX. 800x400px)"
+              extra="SVG, PNG, JPG (MAX. 800x400px, 5MB)"
             >
               <Upload
                 name="file"
@@ -229,7 +229,9 @@ const SponsorInput = () => {
                 onChange={(info) => handleUploadChange(info, "logo")}
                 maxCount={1}
               >
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
+                <Button icon={<UploadOutlined />} disabled={uploading}>
+                  {uploading ? "Uploading..." : "Click to upload"}
+                </Button>
               </Upload>
             </Form.Item>
             <Form.Item
@@ -239,11 +241,7 @@ const SponsorInput = () => {
             >
               <Input />
             </Form.Item>
-            <Form.Item
-              label="Company Short Bio"
-              name="company_bio"
-              rules={[{ required: true, message: "Company Bio is required!" }]}
-            >
+            <Form.Item label="Company Short Bio" name="company_bio">
               <Input.TextArea placeholder="What does your company do?" />
             </Form.Item>
           </div>
@@ -252,9 +250,10 @@ const SponsorInput = () => {
             <Button
               type="primary"
               htmlType="submit"
+              disabled={uploading || submitting}
               className="bg-gradient-to-b from-[#318949] to-[#22CC77] py-2 rounded-lg text-white w-full"
             >
-              Create Sponsor
+              {submitting ? "Submitting..." : "Create Sponsor"}
             </Button>
           </Form.Item>
         </Form>

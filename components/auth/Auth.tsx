@@ -15,7 +15,6 @@ interface AuthProps {
 
 const Auth: React.FC<AuthProps> = ({ trigger }) => {
   console.log(trigger, "trigger");
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isEmailFormVisible, setIsEmailFormVisible] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
@@ -29,9 +28,9 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
   useEffect(() => {
     if (token && !profile) {
       handleFetchProfile();
-      setIsLoggedIn(true);
     }
   }, [token, profile, handleFetchProfile]);
+  const isLoggedIn = !!token && !!profile;
 
   const userName = profile?.firstName || "Guest";
   const profilePic = "";
@@ -52,7 +51,6 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
           href="#"
           onClick={() => {
             handleLogout();
-            setIsLoggedIn(false);
           }}
         >
           Logout
