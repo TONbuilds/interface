@@ -77,10 +77,10 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
     }
   };
   useEffect(() => {
-    if (trigger) {
+    if (trigger && !isModalOpen) {
       handleOpenModal();
     }
-  }, [trigger]);
+  }, [trigger, isModalOpen]);
 
   return (
     <div className="flex items-center gap-4">

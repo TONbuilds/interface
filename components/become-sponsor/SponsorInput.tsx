@@ -4,7 +4,6 @@ import { Form, Input, Button, Upload, Typography, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { uploadMedia } from "@/api/api";
 import { useProfile } from "@/hooks/useProfile";
-import { useRouter } from "next/navigation";
 import HostCompetition from "./HostCompetition";
 
 const { Title, Text } = Typography;
@@ -16,9 +15,13 @@ const SponsorInput = () => {
   const [submitting, setSubmitting] = useState(false);
   const [profilePicturePath, setProfilePicturePath] = useState("");
   const [companyLogoPath, setCompanyLogoPath] = useState("");
+  const [isHostCompetitionOpen, setIsHostCompetitionOpen] = useState(false);
   const [form] = Form.useForm();
   const { profile, handleFetchProfile, handleCompleteProfile } = useProfile();
-  const router = useRouter();
+
+  const toggleHostCompetition = () => {
+    setIsHostCompetitionOpen(!isHostCompetitionOpen);
+  };
 
   const handleUploadChange = async (info: any, type: "profile" | "logo") => {
     const file = info.fileList[0]?.originFileObj;
@@ -71,9 +74,10 @@ const SponsorInput = () => {
         },
       };
 
-      const response = await handleCompleteProfile(sponsorData);
+      await handleCompleteProfile(sponsorData);
       message.success("Sponsor created successfully!");
-      router.push("/bounties");
+      setIsHostCompetitionOpen(true);
+      // router.push("/bounties");
       form.resetFields();
       setProfilePicturePath("");
       setCompanyLogoPath("");
@@ -87,19 +91,15 @@ const SponsorInput = () => {
     }
   };
 
-  const fetchProfileIfNeeded = useCallback(() => {
+  useEffect(() => {
     if (!profile) {
       handleFetchProfile();
     }
   }, [profile, handleFetchProfile]);
 
-  useEffect(() => {
-    fetchProfileIfNeeded();
-  }, [fetchProfileIfNeeded]);
-
-  const firstName = profile?.firstName;
-  const lastName = profile?.lastName;
-  const username = profile?.userName;
+  // const firstName = profile?.firstName;
+  // const lastName = profile?.lastName;
+  // const username = profile?.userName;
 
   return (
     <div className="flex justify-center w-full">
@@ -109,7 +109,7 @@ const SponsorInput = () => {
             Welcome to XYZ
           </Title>
           <Text className="text-[#A0AEC0] text-xl font-medium">
-            Let’s start with some basic information about your company.
+            Lets start with some basic information about your company.
           </Text>
         </div>
         <Form
@@ -258,7 +258,10 @@ const SponsorInput = () => {
             </Button>
           </Form.Item>
         </Form>
-        <HostCompetition />
+        <HostCompetition
+          isOpen={isHostCompetitionOpen}
+          togglePopup={toggleHostCompetition}
+        />{" "}
       </div>
     </div>
   );

@@ -6,9 +6,15 @@ interface AuthState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
+export const fetchTokenFromLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("token");
+  }
+  return null;
+};
 
 const initialState: AuthState = {
-  token: localStorage.getItem("token") || null,
+  token: fetchTokenFromLocalStorage() || null,
   status: "idle",
   error: null,
 };
