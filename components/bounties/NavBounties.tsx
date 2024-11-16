@@ -1,7 +1,23 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
+import Auth from "@/components/auth/Auth";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { useRouter } from "next/navigation";
+import { message } from "antd";
 
 const NavBounties = () => {
+  const { token } = useSelector((state: RootState) => state.auth);
+  const router = useRouter();
+  const handleButtonClick = () => {
+    if (token) {
+      router.push("/become-sponsor");
+    } else {
+      <Auth trigger={true} />;
+      alert("Please login to become a sponsor");
+    }
+  };
+
   return (
     <div className="w-full flex justify-center items-center py-6">
       <div className="flex justify-between items-center w-[92%]">
@@ -13,16 +29,18 @@ const NavBounties = () => {
           <p>About Us</p>
         </div>
         <div className="flex items-center gap-2">
-          <Link href="/become-sponsor">
-            <button className="px-4 py-2 bg-[#0AD372] text-white font-medium border border-[#0AD372] rounded-xl">
-              Become Sponsor
-            </button>
-          </Link>
-          <Link href="/profile">
+          <button
+            onClick={handleButtonClick}
+            className="px-4 py-2 bg-[#0AD372] text-white font-medium border border-[#0AD372] rounded-xl"
+          >
+            Become Sponsor
+          </button>
+          {/* <Link href="/profile">
             <button className="px-4 py-2 text-lg font-bold text-[#0AD372] border rounded-xl">
               Profile
             </button>
-          </Link>
+          </Link> */}
+          <Auth trigger={false} />
         </div>
       </div>
     </div>
