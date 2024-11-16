@@ -40,7 +40,12 @@ const SponsorInput = () => {
       const response = await uploadMedia(formData);
       message.success("File uploaded successfully!");
       const uploadedPath = response.data.data.fileName;
-      console.log(uploadedPath, "uploadedPath");
+      if (!uploadedPath) {
+        alert(
+          "File upload succeeded but no file path was returned. Please try again."
+        );
+        return;
+      }
       if (type === "profile") {
         setProfilePicturePath(uploadedPath);
       } else if (type === "logo") {
