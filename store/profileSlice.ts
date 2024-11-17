@@ -2,41 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchUserProfile, completeUserProfile } from "@/api/api";
 
 interface UserProfile {
-  email: string;
-  name?: string;
-  profilePic?: string;
-  firstName?: string;
-  lastName?: string;
-  userName?: string;
-  status: "active" | "inactive";
-  details?: {
-    location?: string;
-    tonWalletAddress?: string;
-    skills?: string[];
-    subSkills?: string[];
-    projects?: {
-      name: string;
-      description: string;
-      skills: string[];
-      subSkills: string[];
-      url: string;
-    }[];
-  };
-  company?: {
-    name?: string;
-    userName?: string;
-    website?: string;
-    twitter?: string;
-    entityName?: string;
-    logo?: string;
-    industry?: string[];
-    bio?: string;
-  };
-  socialAccounts?: {
-    type: string;
-    url: string;
-  }[];
-  isBlacklisted?: boolean;
+  name: string;
+  emailId: string;
+  walletAddress: string;
+  skills: string[];
+  introduction: string;
+  totalEarning?: string;
+  totalProjectSubmitted?: string;
+  totalWin?: string;
 }
 
 interface ProfileState {

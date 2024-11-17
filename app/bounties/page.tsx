@@ -1,7 +1,5 @@
-import CustomSearch from "@/components/bounties/CustomSearch";
 import NavBounties from "@/components/bounties/NavBounties";
 import NewBounties from "@/components/bounties/NewBounties";
-import RecentEarnings from "@/components/bounties/RecentEarnings";
 import StatsBanner from "@/components/bounties/StatsBanner";
 import React from "react";
 
@@ -10,9 +8,9 @@ const page = () => {
     <div>
       <NavBounties />
       <StatsBanner />
-      <CustomSearch />
-      <RecentEarnings />
-      <NewBounties company="A.D. New Ventures" />
+      {/* <CustomSearch /> */}
+      {/* <RecentEarnings /> */}
+      <NewBounties />
     </div>
   );
 };

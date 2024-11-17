@@ -42,55 +42,58 @@ const config: Config = {
         ton: "var(--ton)",
         "white-background": "var(--white-background)",
       },
+      // fontFamily: {
+      //   button: "var(--button-font-family)",
+      //   "earn-superteam-fun-inter-bold-28":
+      //     "var(--earn-superteam-fun-inter-bold-28-font-family)",
+      //   "earn-superteam-fun-inter-bold-36":
+      //     "var(--earn-superteam-fun-inter-bold-36-font-family)",
+      //   "earn-superteam-fun-inter-bold-48":
+      //     "var(--earn-superteam-fun-inter-bold-48-font-family)",
+      //   "earn-superteam-fun-inter-medium-14":
+      //     "var(--earn-superteam-fun-inter-medium-14-font-family)",
+      //   "earn-superteam-fun-inter-medium-14-upper":
+      //     "var(--earn-superteam-fun-inter-medium-14-upper-font-family)",
+      //   "earn-superteam-fun-inter-medium-18":
+      //     "var(--earn-superteam-fun-inter-medium-18-font-family)",
+      //   "earn-superteam-fun-inter-regular-16":
+      //     "var(--earn-superteam-fun-inter-regular-16-font-family)",
+      //   "earn-superteam-fun-inter-regular-18":
+      //     "var(--earn-superteam-fun-inter-regular-18-font-family)",
+      //   "earn-superteam-fun-inter-regular-20":
+      //     "var(--earn-superteam-fun-inter-regular-20-font-family)",
+      //   "earn-superteam-fun-inter-regular-9":
+      //     "var(--earn-superteam-fun-inter-regular-9-font-family)",
+      //   "earn-superteam-fun-inter-semi-bold-14":
+      //     "var(--earn-superteam-fun-inter-semi-bold-14-font-family)",
+      //   "earn-superteam-fun-inter-semi-bold-16":
+      //     "var(--earn-superteam-fun-inter-semi-bold-16-font-family)",
+      //   "earn-superteam-fun-inter-thin-14-upper":
+      //     "var(--earn-superteam-fun-inter-thin-14-upper-font-family)",
+      //   "earn-superteam-fun-inter-thin-16":
+      //     "var(--earn-superteam-fun-inter-thin-16-font-family)",
+      //   "earn-superteam-fun-inter-thin-20":
+      //     "var(--earn-superteam-fun-inter-thin-20-font-family)",
+      //   "earn-superteam-fun-inter-thin-9":
+      //     "var(--earn-superteam-fun-inter-thin-9-font-family)",
+      //   "earn-superteam-fun-segoe-UI-emoji-regular-16":
+      //     "var(--earn-superteam-fun-segoe-UI-emoji-regular-16-font-family)",
+      //   "earn-superteam-fun-semantic-button":
+      //     "var(--earn-superteam-fun-semantic-button-font-family)",
+      //   "earn-superteam-fun-semantic-cell":
+      //     "var(--earn-superteam-fun-semantic-cell-font-family)",
+      //   "earn-superteam-fun-semantic-data":
+      //     "var(--earn-superteam-fun-semantic-data-font-family)",
+      //   "earn-superteam-fun-semantic-input":
+      //     "var(--earn-superteam-fun-semantic-input-font-family)",
+      //   "earn-superteam-fun-semantic-link":
+      //     "var(--earn-superteam-fun-semantic-link-font-family)",
+      //   "earn-superteam-fun-semantic-options":
+      //     "var(--earn-superteam-fun-semantic-options-font-family)",
+      //   text: "var(--text-font-family)",
+      // },
       fontFamily: {
-        button: "var(--button-font-family)",
-        "earn-superteam-fun-inter-bold-28":
-          "var(--earn-superteam-fun-inter-bold-28-font-family)",
-        "earn-superteam-fun-inter-bold-36":
-          "var(--earn-superteam-fun-inter-bold-36-font-family)",
-        "earn-superteam-fun-inter-bold-48":
-          "var(--earn-superteam-fun-inter-bold-48-font-family)",
-        "earn-superteam-fun-inter-medium-14":
-          "var(--earn-superteam-fun-inter-medium-14-font-family)",
-        "earn-superteam-fun-inter-medium-14-upper":
-          "var(--earn-superteam-fun-inter-medium-14-upper-font-family)",
-        "earn-superteam-fun-inter-medium-18":
-          "var(--earn-superteam-fun-inter-medium-18-font-family)",
-        "earn-superteam-fun-inter-regular-16":
-          "var(--earn-superteam-fun-inter-regular-16-font-family)",
-        "earn-superteam-fun-inter-regular-18":
-          "var(--earn-superteam-fun-inter-regular-18-font-family)",
-        "earn-superteam-fun-inter-regular-20":
-          "var(--earn-superteam-fun-inter-regular-20-font-family)",
-        "earn-superteam-fun-inter-regular-9":
-          "var(--earn-superteam-fun-inter-regular-9-font-family)",
-        "earn-superteam-fun-inter-semi-bold-14":
-          "var(--earn-superteam-fun-inter-semi-bold-14-font-family)",
-        "earn-superteam-fun-inter-semi-bold-16":
-          "var(--earn-superteam-fun-inter-semi-bold-16-font-family)",
-        "earn-superteam-fun-inter-thin-14-upper":
-          "var(--earn-superteam-fun-inter-thin-14-upper-font-family)",
-        "earn-superteam-fun-inter-thin-16":
-          "var(--earn-superteam-fun-inter-thin-16-font-family)",
-        "earn-superteam-fun-inter-thin-20":
-          "var(--earn-superteam-fun-inter-thin-20-font-family)",
-        "earn-superteam-fun-inter-thin-9":
-          "var(--earn-superteam-fun-inter-thin-9-font-family)",
-        "earn-superteam-fun-segoe-UI-emoji-regular-16":
-          "var(--earn-superteam-fun-segoe-UI-emoji-regular-16-font-family)",
-        "earn-superteam-fun-semantic-button":
-          "var(--earn-superteam-fun-semantic-button-font-family)",
-        "earn-superteam-fun-semantic-cell":
-          "var(--earn-superteam-fun-semantic-cell-font-family)",
-        "earn-superteam-fun-semantic-data":
-          "var(--earn-superteam-fun-semantic-data-font-family)",
-        "earn-superteam-fun-semantic-input":
-          "var(--earn-superteam-fun-semantic-input-font-family)",
-        "earn-superteam-fun-semantic-link":
-          "var(--earn-superteam-fun-semantic-link-font-family)",
-        "earn-superteam-fun-semantic-options":
-          "var(--earn-superteam-fun-semantic-options-font-family)",
-        text: "var(--text-font-family)",
+        sans: ["var(--font-inter)", "sans-serif"],
       },
       boxShadow: {
         s: "var(--s)",

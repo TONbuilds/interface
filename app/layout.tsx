@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ReduxProvider from "@/components/ReduxProvider";
+import "antd/dist/reset.css";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider } from "antd";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +32,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ReduxProvider>{children}</ReduxProvider>{" "}
+        <AntdRegistry>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#0ACD6C",
+              },
+            }}
+          >
+            <ReduxProvider>{children}</ReduxProvider>
+          </ConfigProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

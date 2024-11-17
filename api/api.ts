@@ -15,9 +15,16 @@ export const fetchUserProfile = async () => {
 };
 
 export const completeUserProfile = async (profileData: any) => {
-  const response = await axiosInstance.post(
-    "/user/complete-profile",
-    profileData
-  );
+  const response = await axiosInstance.post("/user/profile", profileData);
+  return response.data;
+};
+
+export const fetchAllBounties = async () => {
+  const response = await axiosInstance.get("/post/posts");
+  return response.data;
+};
+
+export const fetchBountyDetails = async (bountyId: string) => {
+  const response = await axiosInstance.get(`/post/post/${bountyId}`);
   return response.data;
 };

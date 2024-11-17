@@ -32,7 +32,7 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
   }, [token, profile, handleFetchProfile]);
   const isLoggedIn = !!token && !!profile;
 
-  const userName = profile?.firstName || "Guest";
+  const userName = profile?.name || "Guest";
   const profilePic = "";
 
   const menuItems = [
@@ -40,10 +40,7 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
       key: "profile",
       label: <Link href="/profile">Profile</Link>,
     },
-    {
-      key: "editProfile",
-      label: <Link href="/edit-profile">Edit Profile</Link>,
-    },
+
     {
       key: "logout",
       label: (

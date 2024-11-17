@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Auth from "@/components/auth/Auth";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { useRouter } from "next/navigation";
-import { message } from "antd";
+import Image from "next/image";
 
 const NavBounties = () => {
   const { token } = useSelector((state: RootState) => state.auth);
@@ -19,9 +19,9 @@ const NavBounties = () => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center py-6">
+    <div className="w-full flex justify-center items-center py-1">
       <div className="flex justify-between items-center w-[92%]">
-        <div>Logo</div>
+        <Image src="/tonBuild.svg" alt="Logo" width={50} height={50} />{" "}
         <div className="flex items-center gap-12">
           <p>Bounties</p>
           <p>Projects</p>
