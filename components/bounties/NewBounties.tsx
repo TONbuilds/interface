@@ -24,7 +24,8 @@ const NewBounties = () => {
 
   return (
     <div className="w-full flex justify-center items-center pb-8 mt-10">
-      <div className="flex flex-col w-[90%] gap-6 bg-[#FFFFFF] p-4 rounded-md">
+      <div className="flex flex-col w-full sm:w-[90%] lg:w-[90%] gap-6 bg-[#FFFFFF] p-4 rounded-md">
+        {" "}
         {status === "loading" && (
           <div className="w-full flex justify-center items-center">
             {" "}

@@ -10,7 +10,6 @@ const Navbar = () => {
           <Image src="/tonBuild.svg" alt="Logo" width={50} height={50} />
         </Link>{" "}
         <div className="flex justify-center items-center gap-8 text-lg">
-          <p>About Us</p>
           <p>Services</p>
           <p>Use Cases</p>
           <p>Pricing</p>

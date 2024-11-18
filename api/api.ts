@@ -39,3 +39,12 @@ export const createSubmission = async (postId: string, submissionData: any) => {
     throw error;
   }
 };
+
+export const fetchUserSubmissions = async () => {
+  try {
+    const response = await axiosInstance.get("/user/submission");
+    return response.data;
+  } catch (error: any) {
+    throw error;
+  }
+};

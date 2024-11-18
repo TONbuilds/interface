@@ -48,7 +48,7 @@ button{
 .ant-btn-primary, .ant-modal-title, .block, .ant-input{
   font-family: Inter, sans-serif !important;
 }
-.truncate-text {
+.truncate-text, .one-line {
   display: -webkit-box;
   -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical;

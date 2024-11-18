@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, Input, Card, Spin } from "antd";
-import { CalendarOutlined, DollarCircleOutlined } from "@ant-design/icons";
+import {
+  CalendarOutlined,
+  DollarCircleOutlined,
+  EditOutlined,
+  LinkOutlined,
+  SendOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
 import Image from "next/image";
 import { useBounties } from "@/hooks/useBounties";
 import { createSubmission } from "@/api/api";
 import { App as AntdApp } from "antd";
+import { useRouter } from "next/navigation";
 
 interface BountyDetailsProps {
   postId: string;
@@ -15,6 +23,7 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const { notification } = AntdApp.useApp();
+  const router = useRouter();
 
   const handleSubmit = async () => {
     const submissionData = {
@@ -28,6 +37,7 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
         description: "Your submission has been successfully uploaded.",
         placement: "topRight",
       });
+      router.push("/bountydashboard");
       console.log("Submitted", result);
       handleCancel();
       setUrl("");
@@ -181,12 +191,22 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
           </Card>
 
           <div
-            className="flex flex-col justify-center items-center bg-white rounded-lg p-6 shadow-md w-full md:w-1/3"
+            className="flex flex-col justify-between bg-white rounded-lg p-6 shadow-md w-full md:w-1/3 h-80"
             style={{ borderColor: "#E0E0E0" }}
           >
-            <h3 className="text-xl font-semibold text-[#2D3748] mb-4">
-              Ready to Submit?
-            </h3>
+            {/* Top Section with Icon */}
+            <div className="flex flex-col items-center">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/10/10/14/46/icon-1728549_640.jpg"
+                alt="Submit Icon"
+                className="h-16 w-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-[#2D3748] mb-4">
+                Ready to Submit?
+              </h3>
+            </div>
+
+            {/* Middle Section with Button */}
             <Button
               type="primary"
               size="large"
@@ -195,13 +215,24 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
             >
               Submit Your Work
             </Button>
+
+            {/* Bottom Section with Additional Info */}
+            <div className="text-sm text-gray-600 mt-4 text-center">
+              Make sure to include all relevant details before submission.{" "}
+              <br />
+              Need help?{" "}
+              <a href="#" className="text-[#22CC77] underline">
+                Learn More
+              </a>
+            </div>
           </div>
         </div>
       )}
 
       <Modal
         title={
-          <div className="text-center text-xl font-bold text-gray-800">
+          <div className="text-center text-xl font-bold text-gray-800 flex items-center justify-center gap-2">
+            <UploadOutlined style={{ color: "#22CC77", fontSize: "24px" }} />
             Submit Your Work
           </div>
         }
@@ -214,7 +245,8 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
       >
         <div className="flex flex-col gap-6 p-4">
           <div>
-            <label className="block text-lg font-semibold text-gray-700 mb-2">
+            <label className="block text-lg font-semibold text-gray-700 mb-2 flex items-center gap-2">
+              <EditOutlined style={{ color: "#22CC77" }} />
               Description
             </label>
             <Input.TextArea
@@ -227,7 +259,8 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
           </div>
 
           <div>
-            <label className="block text-lg font-semibold text-gray-700 mb-2">
+            <label className="block text-lg font-semibold text-gray-700 mb-2 flex items-center gap-2">
+              <LinkOutlined style={{ color: "#22CC77" }} />
               URL
             </label>
             <Input
@@ -242,9 +275,10 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
             <Button
               type="primary"
               onClick={handleSubmit}
-              className="w-full rounded-full px-6 py-3 bg-[#22CC77] text-white text-lg font-semibold shadow-lg hover:bg-[#318949] hover:shadow-xl transition-all"
+              className="w-full rounded-full px-6 py-3 bg-gradient-to-r from-[#22CC77] to-[#318949] text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
             >
-              Submit
+              <SendOutlined />
+              Submit Your Work
             </Button>
           </div>
         </div>

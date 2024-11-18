@@ -43,6 +43,10 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
       key: "profile",
       label: <Link href="/profile">Profile</Link>,
     },
+    {
+      key: "dashboard",
+      label: <Link href="/bountydashboard">Dashboard</Link>,
+    },
 
     {
       key: "logout",
