@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Upload, Typography, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { uploadMedia } from "@/api/api";
@@ -8,7 +8,7 @@ import HostCompetition from "./HostCompetition";
 
 const { Title, Text } = Typography;
 
-const MAX_FILE_SIZE_MB = 5; // Set maximum file size to 5MB
+const MAX_FILE_SIZE_MB = 5;
 
 const SponsorInput = () => {
   const [uploading, setUploading] = useState(false);

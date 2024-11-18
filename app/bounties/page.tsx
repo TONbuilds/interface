@@ -8,8 +8,6 @@ const page = () => {
     <div>
       <NavBounties />
       <StatsBanner />
-      {/* <CustomSearch /> */}
-      {/* <RecentEarnings /> */}
       <NewBounties />
     </div>
   );

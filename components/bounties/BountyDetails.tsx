@@ -13,6 +13,8 @@ import { useBounties } from "@/hooks/useBounties";
 import { createSubmission } from "@/api/api";
 import { App as AntdApp } from "antd";
 import { useRouter } from "next/navigation";
+import { RootState } from "@/store";
+import { useSelector } from "react-redux";
 
 interface BountyDetailsProps {
   postId: string;
@@ -24,6 +26,7 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
   const [url, setUrl] = useState("");
   const { notification } = AntdApp.useApp();
   const router = useRouter();
+  const { token } = useSelector((state: RootState) => state.auth);
 
   const handleSubmit = async () => {
     const submissionData = {
@@ -125,7 +128,6 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
               overflow: "hidden",
             }}
           >
-            {/* Title and Logo */}
             <div className="flex justify-between items-start gap-4">
               <div className="flex-1">
                 <h2 className="text-3xl font-bold text-[#2D3748]">
@@ -204,19 +206,34 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
               <h3 className="text-xl font-semibold text-[#2D3748] mb-4">
                 Ready to Submit?
               </h3>
+
+              {token ? (
+                <Button
+                  type="primary"
+                  size="large"
+                  className="bg-[#22CC77] text-white hover:bg-[#318949] w-full"
+                  onClick={showModal}
+                >
+                  Submit Your Work
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    type="primary"
+                    size="large"
+                    className="bg-[#22CC77] text-white hover:bg-[#318949] w-full"
+                    onClick={showModal}
+                    disabled
+                  >
+                    Submit Your Work
+                  </Button>
+                  <div className="text-red-500 text-center">
+                    Please log in to submit your work.
+                  </div>
+                </>
+              )}
             </div>
 
-            {/* Middle Section with Button */}
-            <Button
-              type="primary"
-              size="large"
-              className="bg-[#22CC77] text-white hover:bg-[#318949] w-full"
-              onClick={showModal}
-            >
-              Submit Your Work
-            </Button>
-
-            {/* Bottom Section with Additional Info */}
             <div className="text-sm text-gray-600 mt-4 text-center">
               Make sure to include all relevant details before submission.{" "}
               <br />

@@ -1,5 +1,4 @@
 import NavBounties from "@/components/bounties/NavBounties";
-import Navbar from "@/components/Navbar";
 import ProfileCard from "@/components/profile/ProfileCard";
 import React from "react";
 
