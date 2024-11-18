@@ -38,18 +38,13 @@ const NewBounties = () => {
             bounties.map((bounty) => (
               <CardBounty
                 key={bounty._id}
-                event={bounty.title}
+                title={bounty.title}
+                description={bounty.description}
                 company={bounty.userId._id}
                 id={bounty._id}
-                days={Math.max(
-                  0,
-                  Math.ceil(
-                    (new Date(bounty.endDate).getTime() - Date.now()) /
-                      (1000 * 60 * 60 * 24)
-                  )
-                )}
+                endDate={bounty.endDate}
                 img={bounty.logo || "/default-bounty.png"}
-                amount={`${bounty.bounty}k`}
+                amount={`${bounty.bounty}`}
               />
             ))}
         </div>

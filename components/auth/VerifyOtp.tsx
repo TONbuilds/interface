@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Input, notification, Typography } from "antd";
+import { Alert, Button, Input, Typography } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
+import { App as AntdApp } from "antd";
 
 const { Title, Text } = Typography;
 
@@ -14,6 +15,7 @@ const VerifyOtp: React.FC = () => {
   const searchParams = useSearchParams();
   const { handleOtpVerification } = useAuth();
   const router = useRouter();
+  const { notification } = AntdApp.useApp();
 
   useEffect(() => {
     const emailFromUrl = searchParams.get("email");

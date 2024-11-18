@@ -2,7 +2,10 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="w-full flex justify-center items-center pb-16">
+    <div
+      className="w-full flex justify-center items-center pb-16"
+      id="contact-us"
+    >
       <div className="flex flex-col gap-16 w-[88%]">
         <div className="flex items-center gap-10">
           <p className="bg-[#8833FF] text-4xl px-2 py-1 rounded-lg font-medium">
@@ -45,7 +48,9 @@ const ContactUs = () => {
               className="border border-black px-8 py-4 rounded-xl outline-none"
             ></textarea>
           </div>
-          <button className="w-[55%] px-8 py-5 bg-[#191A23] rounded-xl text-white">Send Message</button>
+          <button className="w-[55%] px-8 py-5 bg-[#191A23] rounded-xl text-white">
+            Send Message
+          </button>
         </div>
       </div>
     </div>

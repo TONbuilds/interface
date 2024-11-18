@@ -4,7 +4,8 @@ import "./globals.css";
 import ReduxProvider from "@/components/ReduxProvider";
 import "antd/dist/reset.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, App as AntdApp } from "antd";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,17 +33,24 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AntdRegistry>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#0ACD6C",
-              },
-            }}
-          >
-            <ReduxProvider>{children}</ReduxProvider>
-          </ConfigProvider>
-        </AntdRegistry>
+        <AntdApp>
+          <AntdRegistry>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#0ACD6C",
+                },
+              }}
+            >
+              <GoogleOAuthProvider
+                clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}
+              >
+                <ReduxProvider>{children}</ReduxProvider>
+              </GoogleOAuthProvider>
+              ;
+            </ConfigProvider>
+          </AntdRegistry>
+        </AntdApp>
       </body>
     </html>
   );

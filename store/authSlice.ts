@@ -1,4 +1,4 @@
-import { loginWithEmail, verifyOtp } from "@/api/authApi";
+import { googleLogin, loginWithEmail, verifyOtp } from "@/api/authApi";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface AuthState {
@@ -49,6 +49,19 @@ export const otpVerification = createAsyncThunk(
     }
   }
 );
+export const googleLoginThunk = createAsyncThunk(
+  "auth/googleLogin",
+  async (tokenId: string, { rejectWithValue }) => {
+    try {
+      const response = await googleLogin(tokenId);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to login with Google"
+      );
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -74,6 +87,15 @@ const authSlice = createSlice({
         localStorage.setItem("token", action.payload.token);
       })
       .addCase(otpVerification.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(googleLoginThunk.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.status = "succeeded";
+        localStorage.setItem("token", action.payload.token);
+      })
+      .addCase(googleLoginThunk.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
       });

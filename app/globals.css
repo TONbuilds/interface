@@ -24,7 +24,42 @@
 .ant-notification, .ant-message {
   z-index: 3000 !important;
 }
-
+/* later fix this font-family issue */
 body{
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif !important;
+}
+h1, p{
+  font-family: Inter, sans-serif !important;
+}
+.navbar-link-wrapper a{
+  font-family: Inter, sans-serif !important;
+  color:#2d3748;
+  font-size: 16px;
+}
+.navbar-link-wrapper a:hover{
+  color: #2d3748;
+}
+button{
+  font-family: Inter, sans-serif !important;
+}
+.font-16{
+  font-size: 16px !important;
+}
+.ant-btn-primary, .ant-modal-title, .block, .ant-input{
+  font-family: Inter, sans-serif !important;
+}
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.email-login-btn{
+  background-color:#22c55e !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff !important;
 }

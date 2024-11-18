@@ -1,11 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
   return (
-    <div className={`w-full flex justify-center items-center`}>
-      <div className="flex justify-between items-center w-[85%]">
-        <div>Logo</div>
+    <div className="w-full flex justify-center items-center py-0">
+      <div className="flex justify-between items-center w-[90%]">
+        <Link href="/">
+          <Image src="/tonBuild.svg" alt="Logo" width={50} height={50} />
+        </Link>{" "}
         <div className="flex justify-center items-center gap-8 text-lg">
           <p>About Us</p>
           <p>Services</p>

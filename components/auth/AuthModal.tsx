@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
 import { Modal, Button, Input, Divider } from "antd";
-import { MailOutlined, GoogleOutlined } from "@ant-design/icons";
+import { MailOutlined } from "@ant-design/icons";
+import { GoogleLogin } from "@react-oauth/google";
+import { useAuth } from "@/hooks/useAuth";
+import { App as AntdApp } from "antd";
 
 interface AuthModalProps {
   isModalOpen: boolean;
@@ -23,6 +27,34 @@ const AuthModal: React.FC<AuthModalProps> = ({
   setEmail,
   isLoading,
 }) => {
+  const { notification } = AntdApp.useApp();
+
+  const { handleGoogleLogin } = useAuth();
+  const googleLogin = async (response: any) => {
+    try {
+      handleGoogleLogin(response);
+      notification.success({
+        message: "Login Successful",
+        description: "You have logged in successfully using Google.",
+        placement: "topRight",
+      });
+    } catch (err) {
+      console.error("Google Login Failed:", err);
+      notification.error({
+        message: "Login Failed",
+        description:
+          "There was an issue logging you in. Please try again later.",
+        placement: "topRight",
+      });
+    }
+  };
+  const googleLoginError = () => {
+    notification.error({
+      message: "Login Failed",
+      description: "There was an issue logging you in. Please try again later.",
+      placement: "topRight",
+    });
+  };
   return (
     <Modal
       open={isModalOpen}
@@ -59,26 +91,23 @@ const AuthModal: React.FC<AuthModalProps> = ({
           </div>
         ) : (
           <div className="space-y-4">
-            <Button
-              type="primary"
-              icon={<GoogleOutlined />}
-              className="w-full py-3 text-xl text-green-500 border border-green-500 hover:bg-green-100 hover:text-white hover:opacity-80 pt-4 pb-4"
-              loading={isLoading}
-              style={{ backgroundColor: "#22c55e", color: "#fff" }}
-            >
-              Continue with Google
-            </Button>
+            <GoogleLogin onSuccess={googleLogin} onError={googleLoginError} />
             <Divider plain className="text-lg text-gray-700">
               OR
             </Divider>
             <Button
               type="default"
-              icon={<MailOutlined />}
-              className="w-full py-3 text-xl text-green-500 border border-green-500 hover:bg-green-100 hover:text-white hover:opacity-80 pt-4 pb-4"
+              icon={
+                <MailOutlined
+                  style={{ fontSize: "22px", marginRight: "10px" }}
+                />
+              }
+              className="w-full py-4 text-xl text-white border border-green-500 hover:bg-green-100 hover:text-white hover:opacity-80 email-login-btn"
               onClick={() => setIsEmailFormVisible(true)}
-              style={{ backgroundColor: "#22c55e", color: "#fff" }}
             >
-              Continue with Email
+              <span style={{ display: "flex", alignItems: "center" }}>
+                Continue with Email
+              </span>
             </Button>
           </div>
         )}

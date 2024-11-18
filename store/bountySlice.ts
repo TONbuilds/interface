@@ -5,6 +5,7 @@ interface Bounty {
   _id: string;
   userId: { _id: string };
   title: string;
+  description: string;
   logo: string;
   endDate: string;
   bounty: number;

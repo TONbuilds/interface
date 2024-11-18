@@ -3,15 +3,17 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 const CardBounty = ({
-  event,
+  title,
+  description,
   id,
-  days,
+  endDate,
   img,
   amount,
 }: {
-  event: string;
+  title: string;
+  description: string;
   company: string;
-  days: number;
+  endDate: string;
   img: any;
   amount: string;
   id: string;
@@ -19,6 +21,14 @@ const CardBounty = ({
   const router = useRouter();
   const handleCardClick = (id: string) => {
     router.push(`/bounties/${id}`);
+  };
+  const formatDate = (date: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
+    return new Date(date).toLocaleDateString(undefined, options);
   };
   return (
     <div
@@ -28,27 +38,30 @@ const CardBounty = ({
     >
       {" "}
       <div className="flex flex-col gap-4 border border-[#E0E0E0] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-        {/* Title and Company Logo */}
         <div className="flex justify-between items-center">
-          <div className="flex flex-col w-[80%]">
-            <p className="text-[#2D3748] font-semibold text-2xl">{event}</p>
-          </div>
-          <div className="flex justify-center items-center w-16 h-16">
-            <Image
-              src={img}
-              height={60}
-              width={60}
-              alt="company logo"
-              className="object-cover rounded-full shadow-md"
-            />
+          <div className="flex items-center w-[100%] justify-between">
+            <p className="text-[#2D3748] font-semibold text-2xl mb-0">
+              {title}
+            </p>
+            <div className="flex justify-center items-center w-16 h-16">
+              <Image
+                src={img}
+                height={70}
+                width={70}
+                alt="company logo"
+                className="object-cover rounded-full shadow-md"
+              />
+            </div>
           </div>
         </div>
+        <p className="text-sm text-[#718096] mt-2 break-words truncate-text">
+          {description}
+        </p>
 
-        {/* End Date and Bounty Section */}
         <div className="flex justify-between items-center mt-4">
           <div className="flex flex-col">
             <p className="text-[#718096] font-medium text-sm mb-0">
-              Ends in {days}d
+              End Date: {formatDate(endDate)}
             </p>
           </div>
           <div className="flex items-center gap-2 justify-center">

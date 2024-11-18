@@ -8,6 +8,7 @@ import {
   TrophyOutlined,
 } from "@ant-design/icons";
 import { useProfile } from "@/hooks/useProfile";
+import { App as AntdApp } from "antd";
 
 const { TextArea } = Input;
 
@@ -20,6 +21,7 @@ const ProfileCard: React.FC = () => {
   const [totalWins, setTotalWins] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const { handleFetchProfile, handleCompleteProfile } = useProfile();
+  const { message } = AntdApp.useApp();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -288,7 +290,7 @@ const ProfileCard: React.FC = () => {
                 boxShadow: "0 8px 16px rgba(0, 0, 0, 0.15)",
               }}
             >
-              {loading ? "Submitting..." : "EditProfile"}{" "}
+              {loading ? "Saving..." : "Save Profile"}{" "}
             </Button>
           </Row>
         </Form>

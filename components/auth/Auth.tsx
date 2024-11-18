@@ -8,6 +8,8 @@ import { useAuth } from "@/hooks/useAuth";
 import DropdownMenu from "./DropdownMenu";
 import AuthModal from "./AuthModal";
 import Link from "next/link";
+import { App as AntdApp } from "antd";
+import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 interface AuthProps {
   trigger: boolean;
@@ -24,6 +26,7 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
   const { profile, handleFetchProfile } = useProfile();
   const router = useRouter();
   const { handleEmailLogin, handleLogout } = useAuth();
+  const { notification } = AntdApp.useApp();
 
   useEffect(() => {
     if (token && !profile) {
@@ -66,13 +69,33 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
   const handleContinueWithEmail = async (email: string) => {
     setIsLoading(true);
     try {
-      await handleEmailLogin(email);
+      const res = await handleEmailLogin(email);
+      console.log(res.payload, "checking res");
       handleCloseModal();
+      notification.open({
+        message: "OTP Sent",
+        description: res.payload,
+        icon: <CheckCircleOutlined style={{ color: "#52c41a" }} />,
+        placement: "topRight",
+        duration: 3,
+      });
       router.push(`/verify-request?email=${encodeURIComponent(email)}`);
+    } catch (error) {
+      console.error("Error logging in with email", error);
+
+      notification.open({
+        message: "Email Sending Failed",
+        description:
+          "An error occurred while sending the email. Please try again.",
+        icon: <CloseCircleOutlined style={{ color: "#ff4d4f" }} />,
+        placement: "topRight",
+        duration: 5,
+      });
     } finally {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     if (trigger && !isModalOpen) {
       handleOpenModal();
@@ -92,7 +115,7 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
           {!trigger && (
             <button
               onClick={handleOpenModal}
-              className="px-6 py-3 text-lg font-bold text-green-500 border rounded-xl bg-gray-100 hover:bg-green-100 hover:opacity-90 transition-opacity"
+              className="px-6 py-1.5 text-lg  text-green-500 border rounded-xl bg-gray-50 hover:bg-green-100 hover:opacity-90 transition-opacity font-16"
             >
               Join Us
             </button>

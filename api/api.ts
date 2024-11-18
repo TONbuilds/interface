@@ -28,3 +28,14 @@ export const fetchBountyDetails = async (bountyId: string) => {
   const response = await axiosInstance.get(`/post/post/${bountyId}`);
   return response.data;
 };
+export const createSubmission = async (postId: string, submissionData: any) => {
+  try {
+    const response = await axiosInstance.post(
+      `post/submission/${postId}`,
+      submissionData
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

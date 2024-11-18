@@ -3,6 +3,8 @@ import { Button, Modal, Input, Card, Spin } from "antd";
 import { CalendarOutlined, DollarCircleOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { useBounties } from "@/hooks/useBounties";
+import { createSubmission } from "@/api/api";
+import { App as AntdApp } from "antd";
 
 interface BountyDetailsProps {
   postId: string;
@@ -12,10 +14,32 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
+  const { notification } = AntdApp.useApp();
 
-  const handleSubmit = () => {
-    console.log("Submitted", { description, url });
-    setIsModalVisible(false);
+  const handleSubmit = async () => {
+    const submissionData = {
+      description,
+      url,
+    };
+    try {
+      const result = await createSubmission(postId, submissionData);
+      notification.success({
+        message: "Submission Successful!",
+        description: "Your submission has been successfully uploaded.",
+        placement: "topRight",
+      });
+      console.log("Submitted", result);
+      handleCancel();
+      setUrl("");
+      setDescription("");
+    } catch (error) {
+      console.error("Error creating submission:", error);
+      notification.error({
+        message: "Submission Failed",
+        description: "Something went wrong. Please try again.",
+        placement: "topRight",
+      });
+    }
   };
 
   const showModal = () => {
@@ -81,43 +105,46 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
       )}
       {status === "failed" && <p>Error: {error}</p>}
       {status === "succeeded" && (
-        <div
-          className="flex w-[90%] flex-col md:flex-row justify-center gap-8 py-12 px-6 ml-auto mr-auto"
-          style={{ maxHeight: "80vh" }}
-        >
+        <div className="flex w-[90%] flex-col md:flex-row justify-center gap-8 py-12 px-6 ml-auto mr-auto">
           <Card
             className="shadow-lg rounded-xl p-6 w-full md:w-2/3 flex flex-col gap-6"
             style={{
               borderColor: "#E0E0E0",
               borderRight: "4px solid #E0E0E0",
               background: "linear-gradient(90deg, #ffffff 70%, #f9f9f9)",
+              overflow: "hidden",
             }}
           >
             {/* Title and Logo */}
             <div className="flex justify-between items-start gap-4">
-              <div>
+              <div className="flex-1">
                 <h2 className="text-3xl font-bold text-[#2D3748]">
                   {selectedBounty?.title || "Exciting Bounty Challenge"}
                 </h2>
-                <p className="text-sm text-[#718096] mt-2">
-                  Complete this challenge before the deadline and win amazing
-                  rewards!
+                <p className="text-sm text-[#718096] mt-2 break-words">
+                  {selectedBounty?.description ||
+                    "Complete this challenge before the deadline and win amazing rewards!"}
                 </p>
               </div>
               <div
                 className="flex justify-center items-center w-20 h-20 bg-white rounded-full shadow-lg"
-                style={{ overflow: "hidden", border: "2px solid #E0E0E0" }}
+                style={{
+                  overflow: "hidden",
+                  border: "2px solid #E0E0E0",
+                  flexShrink: 0,
+                }}
               >
                 <Image
                   src={selectedBounty?.logo || "/placeholder.png"}
-                  height={80}
-                  width={80}
+                  height={120}
+                  width={120}
                   alt="bounty logo"
                   className="object-cover"
                 />
               </div>
             </div>
 
+            {/* Date and Reward Section */}
             <div className="flex items-center gap-4 w-full mt-7">
               <div className="flex flex-col items-start w-1/2">
                 <div className="flex items-center justify-center gap-2">
@@ -173,36 +200,49 @@ const BountyDetails: React.FC<BountyDetailsProps> = ({ postId }) => {
       )}
 
       <Modal
-        title="Submit Bounty Details"
-        visible={isModalVisible}
+        title={
+          <div className="text-center text-xl font-bold text-gray-800">
+            Submit Your Work
+          </div>
+        }
+        open={isModalVisible}
         onCancel={handleCancel}
         footer={null}
         centered
-        width={400}
+        width={500}
+        className="custom-modal"
       >
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6 p-4">
           <div>
-            <p className="font-semibold">Description</p>
+            <label className="block text-lg font-semibold text-gray-700 mb-2">
+              Description
+            </label>
             <Input.TextArea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter your bounty description"
+              placeholder="Describe your bounty project here..."
               rows={4}
+              className="rounded-lg border-gray-300 focus:ring-[#22CC77] focus:border-[#22CC77]"
             />
           </div>
+
           <div>
-            <p className="font-semibold">URL</p>
+            <label className="block text-lg font-semibold text-gray-700 mb-2">
+              URL
+            </label>
             <Input
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Enter your project URL"
+              className="rounded-lg border-gray-300 focus:ring-[#22CC77] focus:border-[#22CC77]"
             />
           </div>
-          <div className="mt-4 flex justify-center">
+
+          <div className="mt-6 flex justify-center">
             <Button
               type="primary"
               onClick={handleSubmit}
-              className="bg-[#22CC77] text-white hover:bg-[#318949]"
+              className="w-full rounded-full px-6 py-3 bg-[#22CC77] text-white text-lg font-semibold shadow-lg hover:bg-[#318949] hover:shadow-xl transition-all"
             >
               Submit
             </Button>
