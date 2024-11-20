@@ -3,7 +3,7 @@ import React from 'react'
 
 const SponsorFeatures = () => {
     return (
-        <div className='flex w-[95%] flex-end'>
+        <div className='flex w-[95%]'>
             <div className='flex items-center gap-6'>
                 <div>
                     <Image height={600} width={600} src="/rings.svg" alt='ring' />
