@@ -5,7 +5,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
+    <div className="bg-gradient-to-r from-[#CCCCB2] to-[#757519]">
       <NavBounties />
       <StatsBanner />
       <NewBounties />
