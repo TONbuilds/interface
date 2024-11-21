@@ -1,15 +1,21 @@
+import Image from 'next/image'
 import React from 'react'
 
 const SponsorFAQ = () => {
     return (
         <div className='flex flex-col gap-16 w-[80%] justify-center items-center pb-10'>
             <div className="flex flex-col gap-8 w-full">
-                <div className="">
-                    <div className="[font-family:'Inter',Helvetica] font-medium text-[#0ACD6C] text-lg tracking-[2.88px] leading-7 whitespace-nowrap">
-                        FAQ
+                <div className="flex items-end">
+                    <div>
+                        <div className="[font-family:'Inter',Helvetica] font-medium text-[#0ACD6C] text-lg tracking-[2.88px] leading-7 whitespace-nowrap">
+                            FAQ
+                        </div>
+                        <div className="w-[497px] [font-family:'Inter',Helvetica] font-bold text-black text-5xl tracking-[0] leading-[48px]">
+                            Frequently Asked Questions
+                        </div>
                     </div>
-                    <div className="w-[497px] [font-family:'Inter',Helvetica] font-bold text-black text-5xl tracking-[0] leading-[48px]">
-                        Frequently Asked Questions
+                    <div className='flex justify-center w-[93%]'>
+                        <Image height={50} width={50} src="/Star.svg" alt='star' className='' />
                     </div>
                 </div>
 

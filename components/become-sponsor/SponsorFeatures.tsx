@@ -4,6 +4,13 @@ import React from 'react'
 const SponsorFeatures = () => {
     return (
         <div className='flex w-[95%]'>
+            <img
+                // height={100}
+                // width={100}
+                className="absolute w-[529px] h-[451px] left-[23px] z-[-1]"
+                alt="gradient"
+                src="https://c.animaapp.com/fqXdYPef/img/group-35930.png"
+            />
             <div className='flex items-center gap-6'>
                 <div>
                     <Image height={600} width={600} src="/rings.svg" alt='ring' />

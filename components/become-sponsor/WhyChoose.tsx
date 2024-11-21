@@ -4,6 +4,13 @@ import React from 'react'
 const WhyChoose = () => {
     return (
         <div className='flex w-[90%] justify-end'>
+            <div className="absolute w-[317px] h-[230px] top-[1430px] left-[872px] z-[-1]">
+                <div className="relative h-[230px]">
+                    <div className="absolute w-[290px] h-[153px] top-[77px] left-0 bg-slate-600 rounded-[145px/76.5px] blur-[20px]" />
+
+                    <div className="w-[284px] h-[153px] left-[33px] rounded-[142px/76.5px] blur-[30px] absolute top-0 bg-[#0ACD6C]" />
+                </div>
+            </div>
             <div className='flex w-full items-center justify-between gap-6'>
                 <div className="flex flex-col gap-6">
                     <div className="">

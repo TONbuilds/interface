@@ -5,6 +5,13 @@ import React from 'react'
 const SponsorHero = () => {
     return (
         <div className='flex flex-col gap-16 w-[80%] justify-center items-center'>
+            <div className="absolute w-[317px] h-[230px] top-[62px] left-[402px] z-[-1]">
+                <div className="relative h-[230px]">
+                    <div className="absolute w-[290px] h-[153px] top-[77px] left-0 bg-slate-600 rounded-[145px/76.5px] blur-[20px]" />
+
+                    <div className="w-[284px] h-[153px] left-[33px] rounded-[142px/76.5px] blur-[30px] absolute top-0 bg-[#0ACD6C]" />
+                </div>
+            </div>
             <div className='flex flex-col gap-6 w-full items-start'>
                 <p className="w-[896px] font-bold text-black text-[4rem] tracking-[0] leading-[64px] mb-0">
                     Where TON Teams Go To Get Things Done
