@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, Input, Typography } from "antd";
 import { MailOutlined } from "@ant-design/icons";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { App as AntdApp } from "antd";
 
@@ -12,17 +12,19 @@ const VerifyOtp: React.FC = () => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const { handleOtpVerification } = useAuth();
   const router = useRouter();
   const { notification } = AntdApp.useApp();
 
   useEffect(() => {
-    const emailFromUrl = searchParams.get("email");
+    const emailFromUrl = new URLSearchParams(window.location.search).get(
+      "email"
+    );
     if (emailFromUrl) {
       setEmail(emailFromUrl);
     }
-  }, [searchParams]);
+  }, []);
 
   const handleOtpChange = (value: string, index: number) => {
     const updatedOtp = [...otp];
