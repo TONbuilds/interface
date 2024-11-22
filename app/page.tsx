@@ -16,7 +16,7 @@ const inter = Inter({
 export default function Home() {
   return (
     <div
-      className={`${inter.className} font-sans w-full bg-white min-h-screen py-12 bg-contain flex flex-col items-center justify-center gap-16 pt-5`}
+      className={`${inter.className} font-sans w-full bg-white min-h-screen pt-5 pb-12 bg-contain flex flex-col items-center justify-center gap-16`}
       style={{ backgroundImage: "url('/grid.png')" }}
     >
       <Navbar />
