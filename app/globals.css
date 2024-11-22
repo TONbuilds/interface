@@ -63,3 +63,122 @@ button{
   align-items: center;
   color: #fff !important;
 }
+.usdc{
+  color: #94A3B8 !important;
+font-size: 20px !important;
+font-weight: 600 !important;
+margin-right: 6x;
+}
+.time{
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+}
+.bounty-submission .ant-btn{
+  width: 100%;
+  padding: 20px !important;
+  color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 18px;
+font-weight: 600;
+
+}
+
+/* bounty-submission antd form  */
+
+.submission-modal{
+  width: 553px !important;
+}
+
+.submission-modal .ant-modal-title {
+  color: #000;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #D7DEDD !important;
+  padding-bottom: 6px;
+  margin-bottom: 1.5rem !important;
+}
+.submission-modal label{
+  color:  #333 !important;
+font-family: Inter !important;
+font-size: 16px !important;
+font-weight: 600 !important;
+line-height: normal;
+}
+.submission-modal .ant-modal-content{
+  border-radius: 16px !important;
+border: 1px solid #D7DEDD !important;
+background: #FAF9F9 !important;
+box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.25), 0px 4px 3.25px 0px rgba(0, 0, 0, 0.02) !important;
+
+}
+.submission-modal .ant-modal-header{
+  background: transparent !important;
+}
+.submission-modal .ant-modal-content{
+  padding: 20px 60px !important;
+}
+.submission-modal .ant-btn{
+  padding: 8px !important;
+  border-radius: 6px !important;
+background: linear-gradient(180deg, #318949 0%, #2C7 100%) !important;
+color: #fff !important;
+font-size: 16px !important;
+font-weight: 600  !important;
+width: 100%;
+border: none !important;
+}
+
+
+/* Markdown component */
+.markdown h1{
+  color: #334155;
+font-family: Inter;
+font-size: 20px;
+font-weight: 700;
+line-height: 30px; 
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+margin-bottom: 30px;
+}
+.markdown h1:not(:first-child) {
+  margin-top: 40px;
+}
+.markdown p, .markdown li{
+  color: #334155;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; 
+}
+
+.markdown h2{
+  font-size: 18px;
+font-weight: 700;
+line-height: 30px; 
+color: #334155;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+
+}
+.markdown h3{
+  font-size: 16px;
+  color: #334155;
+  font-weight: 700;
+}
+.iframe:focus-visible {
+  outline: none  !important;
+}
+.iframe {
+  outline: none !important;
+}

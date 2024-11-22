@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 3rem;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .left {
+      display: flex;
+      flex-direction: column;
+      .first {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        p {
+          color: #000;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+      .second {
+        p {
+          color: #94a3b8;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      .first {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        p {
+          color: #000;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+      .second {
+        p {
+          color: #94a3b8;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .prizeDistribution {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .total {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 20px;
+      p {
+        color: #334155;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        span {
+          color: #64748b;
+          font-size: 18px;
+          font-weight: 400;
+        }
+      }
+    }
+    .positions {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .positions::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 15px;
+      width: 2px;
+      height: 100%;
+      background-color: #e2e8f0;
+      z-index: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      position: relative;
+      z-index: 1;
+      margin-left: -20px;
+      border: 2px solid #e2e8f0;
+      background: #e2e8f0;
+    }
+
+    .content {
+      color: #1a202c;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 20px;
+      span {
+        color: #64748b;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+}

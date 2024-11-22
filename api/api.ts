@@ -34,8 +34,10 @@ export const createSubmission = async (postId: string, submissionData: any) => {
       `post/submission/${postId}`,
       submissionData
     );
+    console.log(response, "testing response");
     return response.data;
   } catch (error) {
+    console.log(error, "testing errro");
     throw error;
   }
 };

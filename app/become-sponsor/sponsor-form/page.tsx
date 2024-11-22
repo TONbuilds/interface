@@ -1,12 +1,14 @@
-import SponsorInput from '@/components/become-sponsor/SponsorInput'
-import React from 'react'
+import SponsorForm from "@/components/become-sponsor/SponsorForm";
+import NavBounties from "@/components/bounties/NavBounties";
+import React from "react";
 
 const page = () => {
-    return (
-        <div className="flex justify-center w-full my-12">
-            <SponsorInput />
-        </div>
-    )
-}
+  return (
+    <div className="">
+      <NavBounties />
+      <SponsorForm />
+    </div>
+  );
+};
 
-export default page
+export default page;
