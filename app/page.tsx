@@ -1,5 +1,6 @@
 import ContactUs from "@/components/ContactUs";
 import FeaturedProjects from "@/components/FeaturedProjects";
+import Footer from "@/components/Footer";
 import Happen from "@/components/Happen";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -16,7 +17,7 @@ const inter = Inter({
 export default function Home() {
   return (
     <div
-      className={`${inter.className} font-sans w-full bg-white min-h-screen pt-5 pb-12 bg-contain flex flex-col items-center justify-center gap-16`}
+      className={`${inter.className} font-sans w-full bg-white min-h-screen pt-5 bg-contain flex flex-col items-center justify-center gap-16`}
       style={{ backgroundImage: "url('/grid.png')" }}
     >
       <Navbar />
@@ -26,6 +27,7 @@ export default function Home() {
       <Why />
       <Testimonials />
       <ContactUs />
+      <Footer />
     </div>
   );
 }
