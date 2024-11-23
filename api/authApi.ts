@@ -15,6 +15,8 @@ export const googleLogin = async (tokenId: string) => {
     const response = await axiosInstance.post("/user/google-login", {
       tokenId,
     });
+    console.log(response, "response login");
+
     return response.data;
   } catch (err) {
     console.log(err);

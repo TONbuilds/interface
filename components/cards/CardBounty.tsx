@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const CardBounty = ({
   title,
@@ -55,7 +57,9 @@ const CardBounty = ({
           </div>
         </div>
         <p className="text-sm text-[#718096] mt-2 break-words truncate-text">
-          {description}
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {description}
+          </ReactMarkdown>
         </p>
 
         <div className="flex justify-between items-center mt-4">

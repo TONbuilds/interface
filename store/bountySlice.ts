@@ -1,15 +1,25 @@
 import { fetchAllBounties, fetchBountyDetails } from "@/api/api";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-interface Bounty {
-  _id: string;
-  userId: { _id: string };
+interface Company {
+  name: string;
+  logo: string;
+}
+
+interface BountyDetails {
   title: string;
   description: string;
-  logo: string;
+  prize: number;
   endDate: string;
-  bounty: number;
-  type: string;
+  status: "active" | "inactive";
+}
+
+interface Bounty {
+  _id: string;
+  userId: { _id: string; name?: string; emailId?: string };
+  company: Company;
+  bounty: BountyDetails;
+  type: "bounty" | "task";
   __v: number;
 }
 
@@ -32,6 +42,7 @@ export const fetchBounties = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetchAllBounties();
+      console.log("response", response);
       return response;
     } catch (error: any) {
       return rejectWithValue(
@@ -46,7 +57,6 @@ export const fetchBountyDetailsThunk = createAsyncThunk(
   async (bountyId: string, { rejectWithValue }) => {
     try {
       const response = await fetchBountyDetails(bountyId);
-      console.log(response, "response");
       return response;
     } catch (error: any) {
       return rejectWithValue(

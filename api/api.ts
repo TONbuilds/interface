@@ -45,6 +45,7 @@ export const createSubmission = async (postId: string, submissionData: any) => {
 export const fetchUserSubmissions = async () => {
   try {
     const response = await axiosInstance.get("/user/submission");
+    console.log(response, "testing response");
     return response.data;
   } catch (error: any) {
     throw error;

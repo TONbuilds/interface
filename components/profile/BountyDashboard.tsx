@@ -17,7 +17,7 @@ const BountyDashboard: React.FC = () => {
   const { notification } = AntdApp.useApp();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  console.log(lists.length, "length");
+  console.log(lists.length, lists, "length");
 
   const submissionList = async () => {
     setLoading(true);
@@ -41,14 +41,6 @@ const BountyDashboard: React.FC = () => {
     submissionList();
   }, []);
 
-  if (lists.length === 0) {
-    return (
-      <div className="flex justify-center items-center">
-        <Spin size="large" />
-      </div>
-    );
-  }
-
   return (
     <div className="w-full py-12 pt-0">
       <div className="relative bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white py-20">
@@ -62,6 +54,11 @@ const BountyDashboard: React.FC = () => {
           </p>
         </div>
       </div>
+      {loading && lists.length === 0 && (
+        <div className="flex justify-center items-center h-screen">
+          <Spin size="large" />
+        </div>
+      )}
       {!loading && (error || lists.length === 0) && (
         <div className="flex justify-center items-center h-screen">
           <Empty
@@ -84,7 +81,7 @@ const BountyDashboard: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between ">
                   <h3 className="text-xl font-bold text-[#2D3748] pb-0">
-                    {list.postId.title}
+                    {list.title}
                   </h3>
                   <Image
                     src={list.postId.logo}

@@ -39,13 +39,13 @@ const NewBounties = () => {
             bounties.map((bounty) => (
               <CardBounty
                 key={bounty._id}
-                title={bounty.title}
-                description={bounty.description}
+                title={bounty.bounty.title}
+                description={bounty.bounty.description}
                 company={bounty.userId._id}
                 id={bounty._id}
-                endDate={bounty.endDate}
-                img={bounty.logo || "/default-bounty.png"}
-                amount={`${bounty.bounty}`}
+                endDate={bounty.bounty.endDate}
+                img={bounty.company.logo || "/default-bounty.png"}
+                amount={`${bounty.bounty.prize}`}
               />
             ))}
         </div>

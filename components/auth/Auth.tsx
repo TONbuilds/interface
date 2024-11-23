@@ -36,6 +36,7 @@ const Auth: React.FC<AuthProps> = ({ trigger }) => {
   const isLoggedIn = !!token && !!profile;
 
   const userName = profile?.name || "Guest";
+  console.log(profile, "checking profile");
   const profilePic = "";
 
   const menuItems = [

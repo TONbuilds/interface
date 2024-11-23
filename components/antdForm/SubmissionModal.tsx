@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Modal, Button, Input, Form } from "antd";
 import { createSubmission } from "@/api/api";
 import { App as AntdApp } from "antd";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 interface SubmissionModalProps {
   postId: string;
@@ -12,6 +14,7 @@ const SubmissionModal = ({ postId }: SubmissionModalProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
   const { notification } = AntdApp.useApp();
+  const { token } = useSelector((state: RootState) => state.auth);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -192,9 +195,20 @@ const SubmissionModal = ({ postId }: SubmissionModalProps) => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
+            {token ? (
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            ) : (
+              <>
+                <Button type="primary" disabled>
+                  Submit
+                </Button>
+                <div className="text-red-500 text-center">
+                  Please log in to submit your work.
+                </div>
+              </>
+            )}
           </Form.Item>
         </Form>
       </Modal>

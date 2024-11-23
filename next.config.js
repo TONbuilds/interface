@@ -2,9 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["cdn.pixabay.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+    unoptimized: true,
   },
-  /* config options here */
 };
 
 module.exports = nextConfig;
