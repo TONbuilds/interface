@@ -39,7 +39,7 @@ const CardBounty = ({
       style={{ cursor: "pointer" }}
     >
       {" "}
-      <div className="flex flex-col gap-4 border border-[#E0E0E0] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <div className="flex flex-col gap-4 border border-[#E0E0E0] bg-[#FFFFFF] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
         <div className="flex justify-between items-center">
           <div className="flex items-center w-[100%] justify-between">
             <p className="text-[#2D3748] font-semibold text-2xl mb-0">
