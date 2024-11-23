@@ -5,7 +5,7 @@ const Why = () => {
     <div className="w-full flex justify-center items-center pb-8 sm:pb-16">
       <div className="flex flex-col gap-8 sm:gap-16 w-[88%]">
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-10">
-          <p className="bg-[#8833FF] text-3xl sm:text-4xl px-2 py-1 rounded-lg font-medium">
+          <p className="bg-gradient-to-b from-[#318949] to-[#22CC77] text-[#F3F3F3] text-3xl sm:text-4xl px-2 py-1 rounded-lg font-medium">
             Why Us?
           </p>
           <p className="text-lg text-center sm:text-start sm:w-[36.5rem]">
@@ -22,7 +22,7 @@ const Why = () => {
               fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
               vitae mattis tellus.
             </p>
-            <button className="text-[#8833FF] text-xl">Learn More</button>
+            <button className="text-transparent bg-clip-text bg-gradient-to-b from-[#318949] to-[#22CC77] text-xl">Learn More</button>
           </div>
 
           <div className="flex flex-col items-start gap-5 border-b-2 sm:border-b-0 pb-8 sm:pb-0">
@@ -32,7 +32,7 @@ const Why = () => {
               fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
               vitae mattis tellus.
             </p>
-            <button className="text-[#8833FF] text-xl">Learn More</button>
+            <button className="text-transparent bg-clip-text bg-gradient-to-b from-[#318949] to-[#22CC77] text-xl">Learn More</button>
           </div>
 
           <div className="flex flex-col items-start gap-5">
@@ -42,7 +42,7 @@ const Why = () => {
               fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
               vitae mattis tellus.
             </p>
-            <button className="text-[#8833FF] text-xl">Learn More</button>
+            <button className="text-transparent bg-clip-text bg-gradient-to-b from-[#318949] to-[#22CC77] text-xl">Learn More</button>
           </div>
         </div>
       </div>

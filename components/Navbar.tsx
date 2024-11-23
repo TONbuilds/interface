@@ -22,7 +22,7 @@ const Navbar = () => {
           <p className="mb-0">Pricing</p>
           <p className="mb-0">Blog</p>
           <Link href="/bounties">
-            <button className="flex border border-[#000000] rounded-xl px-6 py-4 text-base shrink-0">
+            <button className="flex justify-center items-center text-white py-3 px-5 bg-[#191A23] text-lg font-normal text-center rounded-xl transform hover:scale-110 transition-transform duration-200 ease-out">
               Launch App
             </button>
           </Link>
