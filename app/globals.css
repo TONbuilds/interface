@@ -1,7 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0 !important;
+}
 
 .box-background {
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.35);
@@ -21,73 +31,78 @@
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
 }
 
-.ant-notification, .ant-message {
+.ant-notification,
+.ant-message {
   z-index: 3000 !important;
 }
 /* later fix this font-family issue */
-body{
+body {
   font-family: Inter, sans-serif !important;
 }
-h1, p{
+h1,
+p {
   font-family: Inter, sans-serif !important;
 }
-.navbar-link-wrapper a{
+.navbar-link-wrapper a {
   font-family: Inter, sans-serif !important;
-  color:#2d3748;
+  color: #2d3748;
   font-size: 16px;
 }
-.navbar-link-wrapper a:hover{
+.navbar-link-wrapper a:hover {
   color: #2d3748;
 }
-button{
+button {
   font-family: Inter, sans-serif !important;
 }
-.font-16{
+.font-16 {
   font-size: 16px !important;
 }
-.ant-btn-primary, .ant-modal-title, .block, .ant-input{
+.ant-btn-primary,
+.ant-modal-title,
+.block,
+.ant-input {
   font-family: Inter, sans-serif !important;
 }
-.truncate-text, .one-line {
+.truncate-text,
+.one-line {
   display: -webkit-box;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
 }
-.email-login-btn{
-  background-color:#22c55e !important;
+.email-login-btn {
+  background-color: #22c55e !important;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff !important;
 }
-.usdc{
-  color: #94A3B8 !important;
-font-size: 20px !important;
-font-weight: 600 !important;
-margin-right: 6x;
+.usdc {
+  color: #94a3b8 !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  margin-right: 6x;
 }
-.time{
+.time {
   color: #000;
   font-size: 20px;
   font-weight: 500;
 }
-.bounty-submission .ant-btn{
+.bounty-submission .ant-btn {
   width: 100%;
   padding: 20px !important;
-  color: #FFF;
-text-align: center;
-font-family: Inter;
-font-size: 18px;
-font-weight: 600;
-
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* bounty-submission antd form  */
 
-.submission-modal{
+.submission-modal {
   width: 553px !important;
 }
 
@@ -95,89 +110,88 @@ font-weight: 600;
   color: #000;
   font-size: 24px !important;
   font-weight: 600 !important;
-  border-bottom: 1px solid #D7DEDD !important;
+  border-bottom: 1px solid #d7dedd !important;
   padding-bottom: 6px;
   margin-bottom: 1.5rem !important;
 }
-.submission-modal label{
-  color:  #333 !important;
-font-family: Inter !important;
-font-size: 16px !important;
-font-weight: 600 !important;
-line-height: normal;
+.submission-modal label {
+  color: #333 !important;
+  font-family: Inter !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: normal;
 }
-.submission-modal .ant-modal-content{
+.submission-modal .ant-modal-content {
   border-radius: 16px !important;
-border: 1px solid #D7DEDD !important;
-background: #FAF9F9 !important;
-box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.25), 0px 4px 3.25px 0px rgba(0, 0, 0, 0.02) !important;
-
+  border: 1px solid #d7dedd !important;
+  background: #faf9f9 !important;
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 3.25px 0px rgba(0, 0, 0, 0.02) !important;
 }
-.submission-modal .ant-modal-header{
+.submission-modal .ant-modal-header {
   background: transparent !important;
 }
-.submission-modal .ant-modal-content{
+.submission-modal .ant-modal-content {
   padding: 20px 60px !important;
 }
-.submission-modal .ant-btn{
+.submission-modal .ant-btn {
   padding: 8px !important;
   border-radius: 6px !important;
-background: linear-gradient(180deg, #318949 0%, #2C7 100%) !important;
-color: #fff !important;
-font-size: 16px !important;
-font-weight: 600  !important;
-width: 100%;
-border: none !important;
+  background: linear-gradient(180deg, #318949 0%, #2c7 100%) !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  width: 100%;
+  border: none !important;
 }
 
-
 /* Markdown component */
-.markdown h1{
+.markdown h1 {
   color: #334155;
-font-family: Inter;
-font-size: 20px;
-font-weight: 700;
-line-height: 30px; 
-text-decoration-line: underline;
-text-decoration-style: solid;
-text-decoration-skip-ink: auto;
-text-decoration-thickness: auto;
-text-underline-offset: auto;
-text-underline-position: from-font;
-margin-bottom: 30px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  margin-bottom: 30px;
 }
 .markdown h1:not(:first-child) {
   margin-top: 40px;
 }
-.markdown p, .markdown li{
+.markdown p,
+.markdown li {
   color: #334155;
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; 
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 }
 
-.markdown h2{
+.markdown h2 {
   font-size: 18px;
-font-weight: 700;
-line-height: 30px; 
-color: #334155;
-text-decoration-line: underline;
-text-decoration-style: solid;
-text-decoration-skip-ink: auto;
-text-decoration-thickness: auto;
-text-underline-offset: auto;
-text-underline-position: from-font;
-
+  font-weight: 700;
+  line-height: 30px;
+  color: #334155;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
 }
-.markdown h3{
+.markdown h3 {
   font-size: 16px;
   color: #334155;
   font-weight: 700;
 }
 .iframe:focus-visible {
-  outline: none  !important;
+  outline: none !important;
 }
 .iframe {
   outline: none !important;

@@ -8,7 +8,7 @@ const ContactUs = () => {
     >
       <div className="flex flex-col gap-10 sm:gap-16 w-[88%]">
         <div className="flex items-center flex-col sm:flex-row gap-4 sm:gap-10">
-          <p className="bg-[#8833FF] text-4xl px-2 py-1 rounded-lg font-medium">
+          <p className="bg-gradient-to-b from-[#318949] to-[#22CC77] text-[#F3F3F3] text-4xl px-2 py-1 rounded-lg font-medium">
             Contact Us
           </p>
           <p className="text-lg sm:w-[36.5rem] text-center">
