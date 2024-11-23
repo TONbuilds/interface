@@ -196,3 +196,6 @@ button {
 .iframe {
   outline: none !important;
 }
+.markdown h1, .markdown h2{
+  margin-bottom: 1.5rem !important;
+}
