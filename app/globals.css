@@ -137,7 +137,7 @@ button {
 .submission-modal .ant-btn {
   padding: 8px !important;
   border-radius: 6px !important;
-  background: linear-gradient(180deg, #318949 0%, #2c7 100%) !important;
+  background: #2ed97d !important;
   color: #fff !important;
   font-size: 16px !important;
   font-weight: 600 !important;

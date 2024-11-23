@@ -196,7 +196,7 @@ const SubmissionModal = ({ postId }: SubmissionModalProps) => {
 
           <Form.Item>
             {token ? (
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" className="bg-black" htmlType="submit">
                 Submit
               </Button>
             ) : (

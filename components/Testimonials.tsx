@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import MessageCarousel from "./bounties/TestimonialsContent";
 
 const Testimonials = () => {
   return (
@@ -15,13 +15,7 @@ const Testimonials = () => {
           </p>
         </div>
         <div className="w-full">
-          <Image
-            width={100}
-            height={100}
-            src="/TestimonialsBlock.svg"
-            alt="testimonials"
-            className="w-full"
-          />
+          <MessageCarousel />
         </div>
       </div>
     </div>
