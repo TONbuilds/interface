@@ -5,10 +5,12 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="bg-gradient-to-r from-[#CCCCB2] to-[#757519]">
+    <div>
       <NavBounties />
-      <StatsBanner />
-      <NewBounties />
+      <div className="bg-gradient-to-r from-[#CCCCB2] to-[#757519]">
+        <StatsBanner />
+        <NewBounties />
+      </div>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
             {userName.charAt(0).toUpperCase()}
           </Avatar>
         )}
-        <span className="text-white">{userName}</span>
+        <span className="">{userName}</span>
       </div>
     </Dropdown>
   );
