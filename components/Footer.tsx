@@ -36,8 +36,8 @@ const TwitterIcon = () => (
 
 const Footer = () => {
     return (
-        <footer className="bg-[#3E3E3E] text-gray-200 p-12 w-[88%] rounded-t-[3rem]">
-            <div className="mx-auto">
+        <footer className="bg-[#3E3E3E] text-gray-200 p-4 sm:p-12 w-[88%] rounded-t-3xl sm:rounded-t-[3rem]">
+            <div className="sm:mx-auto">
                 {/* Top Navigation */}
                 <nav className="flex justify-center md:justify-end space-x-6 mb-12">
                     <Link
@@ -89,7 +89,7 @@ const Footer = () => {
 
                     {/* Newsletter Form */}
                     <div className="bg-[#292A32] p-6 rounded-2xl flex justify-center items-center">
-                        <form className="flex gap-3 justify-center items-center">
+                        <form className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                             <input
                                 type="email"
                                 placeholder="Email"
