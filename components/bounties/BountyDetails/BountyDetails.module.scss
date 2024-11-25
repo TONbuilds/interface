@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 4rem;
+  padding: 0 1rem;
   font-family: Inter, sans-serif !important;
+
+  @media (min-width: 768px) {
+    padding: 0 4rem;
+  }
 
   p {
     margin-bottom: 0 !important;
@@ -11,25 +15,37 @@
   h2 {
     margin-bottom: 0.5rem;
   }
+
   .top {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 16px;
     border-radius: 5px;
     border: 1px solid rgba(86, 86, 86, 0.14);
-    align-items: flex-start;
     align-self: stretch;
     background: linear-gradient(
       23deg,
       rgba(255, 255, 255, 0.5) 41.19%,
       rgba(34, 204, 119, 0.5) 117.87%
     );
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
     .left {
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 6px;
+      margin-bottom: 1rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+      }
+
       .title {
         color: #334155;
         font-size: 16px;
@@ -43,6 +59,13 @@
       .des {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        @media (min-width: 768px) {
+          flex-wrap: nowrap;
+        }
+
         .bounty {
           display: flex;
           align-items: center;
@@ -111,7 +134,13 @@
         }
       }
     }
+
+    .right {
+      width: 64px;
+      height: 64px;
+    }
   }
+
   .skills {
     display: flex;
     flex-direction: column;
@@ -126,6 +155,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
 
       p {
         color: #475569;
@@ -138,15 +168,28 @@
       }
     }
   }
+
   .nav {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     padding-bottom: 10px;
     border-bottom: 1px solid #e2e8f0;
     margin-top: 3rem;
     width: 100%;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+    }
+
     .prize {
-      width: 30%;
+      width: 100%;
+      margin-bottom: 1rem;
+
+      @media (min-width: 768px) {
+        width: 30%;
+        margin-bottom: 0;
+      }
 
       p {
         color: #64748b;
@@ -156,8 +199,13 @@
       }
     }
     .details {
-      width: 70%;
-      padding-left: 20px;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: 70%;
+        padding-left: 20px;
+      }
+
       p {
         color: #64748b;
         font-size: 14px;
@@ -177,27 +225,86 @@
       }
     }
   }
+
   .wrapper {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    max-height: 80vh;
-    overflow-y: auto;
-    .left {
-      width: 30%;
-      padding-right: 20px;
-      border-right: 1px solid #f1f5f9;
-      padding-top: 20px;
-      position: sticky;
-      top: 20px;
-    }
-    .right {
-      padding-top: 20px;
-      width: 70%;
-      padding-left: 20px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      max-height: 80vh;
       overflow-y: auto;
+    }
+
+    .left {
+      width: 100%;
+      padding-top: 20px;
+      margin-bottom: 2rem;
+
+      @media (min-width: 768px) {
+        width: 30%;
+        padding-right: 20px;
+        border-right: 1px solid #f1f5f9;
+        margin-bottom: 0;
+        position: sticky;
+        top: 20px;
+      }
+    }
+
+    .right {
+      width: 100%;
+      padding-top: 20px;
+      
+
+      @media (min-width: 768px) {
+        width: 70%;
+        padding-left: 20px;
+        overflow-y: auto;
+      }
+
       p {
         margin-bottom: 1rem !important;
       }
+    }
+  }
+}
+
+// Add styles for markdown content
+.markdown {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #334155;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  ul,
+  ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 14px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
+    h3 {
+      font-size: 1.125rem;
     }
   }
 }
